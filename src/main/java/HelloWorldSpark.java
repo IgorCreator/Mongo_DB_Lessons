@@ -12,5 +12,17 @@ public class HelloWorldSpark {
                 return "Hello World first Spark";
             }
         });
+
+        Spark.get("/test", new Route() {
+            public Object handle(Request request, Response response) throws Exception {
+                return "Test Hello World with call by /test";
+            }
+        });
+
+        Spark.get("/echo/:think", new Route() {
+            public Object handle(Request request, Response response) throws Exception {
+                return request.params(":think");
+            }
+        });
     }
 }
