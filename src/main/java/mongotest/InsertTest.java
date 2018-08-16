@@ -1,3 +1,5 @@
+package mongotest;
+
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
@@ -35,7 +37,7 @@ public class InsertTest {
 
         people.insertOne(doc);      // first insert
         printJson(doc);
-        doc.remove("_id");             // remove the _id key
+        doc.remove("_id");     // remove the _id key
         people.insertOne(doc);      // second insert
         printJson(doc);
     }
