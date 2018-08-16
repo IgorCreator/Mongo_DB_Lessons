@@ -13,7 +13,7 @@ import static org.bson.json.JsonWriterSettings.builder;
 public class UtilizeMongoDB {
     public static void printJson(Document document) {
         JsonWriter jsonWriter = new JsonWriter(new StringWriter(),
-                builder().outputMode(JsonMode.SHELL).indent(true).build());
+                builder().outputMode(JsonMode.SHELL).indent(false).build());
 
         new DocumentCodec().encode(jsonWriter, document,
                 EncoderContext.builder()

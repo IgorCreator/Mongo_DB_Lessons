@@ -13,6 +13,7 @@ import java.util.Random;
 
 import static com.mongodb.client.model.Filters.*;
 import static com.mongodb.client.model.Projections.*;
+import static com.mongodb.client.model.Sorts.descending;
 import static utils.UtilizeMongoDB.printJson;
 
 public class FindTest {
@@ -54,7 +55,12 @@ public class FindTest {
         System.out.println("With projection");
         //Bson projectionOneWay = new Document("x", 0).append("_id", 0);
         Bson projectionSecondWay = fields(include("x", "i"), excludeId());
-        List<Document> all = collection.find().projection(projectionSecondWay).into(new ArrayList<Document>());
+        List<Document> all = collection.find()
+                .projection(projectionSecondWay)
+                .sort(descending("x"))
+                .limit(5)
+                .skip(2)
+                .into(new ArrayList<Document>());
         for (Document document : all) {
             printJson(document);
         }
